@@ -5,7 +5,7 @@ from GlxssLive_web.TestCase.Page_obj.registerPage import register
 import unittest
 
 
-class Test004_RegisterError(myunit.MyTest):
+class Test004_Register_Error(myunit.MyTest):
 
     def test_register_error1(self):
         '''企业不存在'''

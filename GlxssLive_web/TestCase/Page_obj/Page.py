@@ -20,11 +20,12 @@ class Page(object):
     def open(self):
         self._open(self.url)
 
-    # def on_page(self):
-    #     return self.driver.current_url == self.url
-
     def on_page(self):
+        # print(self.url)
         return self.driver.current_url == (self.base_url + self.url)
 
     def script(self, src):
         return self.driver.excute_script(src)
+
+    def switch_to_frame(self):
+        self.driver.switch_to.frame(0)

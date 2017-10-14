@@ -4,10 +4,10 @@ import time
 
 
 class register(Page):
-    '''用户登录页面'''
+    '''用户注册页面'''
     url = "/mailSend.html"
 
-    def verify(self):
+    def verify_page(self):
         return self.on_page()
 
     open_link_loc = (By.LINK_TEXT, "立即注册»")

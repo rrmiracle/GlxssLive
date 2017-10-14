@@ -5,7 +5,7 @@ from GlxssLive_web.TestCase.Page_obj.loginPage import login
 import unittest
 
 
-class Test002_LoginError(myunit.MyTest):
+class Test002_Login_Error(myunit.MyTest):
 
     def test_login_error1(self):
         '''账号格式错误'''

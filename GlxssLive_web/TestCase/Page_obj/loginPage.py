@@ -35,6 +35,7 @@ class login(Page):
         self.login_code(code)
         time.sleep(10)
         self.login_button()
+        time.sleep(2)
 
     error_hint_loc = (By.XPATH, ".//*[@id='loginForm']/h4")
     pop_error_loc = (By.CSS_SELECTOR, ".layui-layer-content")

@@ -6,7 +6,7 @@ import unittest
 import time
 
 
-class Test003_register_P1(myunit.MyTest):
+class Test003_Register_P1(myunit.MyTest):
 
     def test_register(self):
         '''注册成功'''
@@ -14,7 +14,7 @@ class Test003_register_P1(myunit.MyTest):
         r.goto_register()
         r.register(Data.businesscode, Data.email, Data.name, Data.password, Data.password)
         time.sleep(3)
-        self.assertEqual(r.verify(), True)
+        self.assertEqual(r.verify_page(), True)
         function.screenshot(self.driver, "register_success.jpg")
 
 
