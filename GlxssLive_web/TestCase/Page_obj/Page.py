@@ -25,7 +25,7 @@ class Page(object):
         return self.driver.current_url == (self.base_url + self.url)
 
     def script(self, src):
-        return self.driver.excute_script(src)
+        return self.driver.execute_script(src)
 
     def switch_to_frame(self):
         self.driver.switch_to.frame(0)

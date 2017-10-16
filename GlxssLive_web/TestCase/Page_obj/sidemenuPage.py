@@ -11,7 +11,6 @@ class sidemenu(Page):
     def verify_page(self):
         return self.on_page()
 
-
     side_menu_loc = (By.XPATH, ".//*[@id='page-wrapper']/div[1]/nav/div/a")
     drop_down_loc = (By.XPATH, ".//*[@id='side-menu']/li[1]/div[1]/a/span/span[2]/b")
     logout_loc = (By.XPATH, ".//*[@id='side-menu']/li[1]/div[1]/ul/li[3]/a")
@@ -39,11 +38,7 @@ class sidemenu(Page):
         self.find_element(*self.logout_loc).click()
         time.sleep(1)
 
-    tagname_loc = (By.XPATH, ".//*[@id='perapp']/div/div/div/div[1]/h5")
     result_loc = (By.XPATH, "html/body/div[3]/h2")
-
-    def tagname(self):
-        return self.find_element(*self.tagname_loc).text
 
     def result(self):
         return self.find_element(*self.result_loc).text
@@ -55,4 +50,24 @@ class sidemenu(Page):
 
     def reason(self):
         return self.find_element(*self.reason_loc).get_attribute("innerText")
+
+    company_loc = (By.ID, "bsType_chosen")
+    my_company_loc = (By.XPATH, ".//*[@id='bsType_chosen']/div/ul/li[1]")
+
+    def select_company(self):
+        self.find_element(*self.company_loc).click()
+        time.sleep(1)
+        self.find_element(*self.my_company_loc).click()
+        time.sleep(1)
+
+    confirm_button_loc = (By.XPATH, "html/body/div[3]/div[7]/button[2]")
+    cancel_button_loc = (By.XPATH, "html/body/div[3]/div[7]/button[1]")
+
+    def confirm(self):
+        self.find_element(*self.confirm_button_loc).click()
+        time.sleep(1)
+
+    def cancel(self):
+        self.find_element(*self.cancel_button_loc).click()
+        time.sleep(1)
 

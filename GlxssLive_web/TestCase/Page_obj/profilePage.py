@@ -23,6 +23,11 @@ class profile(sidemenu):
         self.find_element(*self.name_loc).clear()
         time.sleep(1)
 
+    tagname_loc = (By.XPATH, ".//*[@id='perapp']/div/div/div/div[1]/h5")
+
+    def tagname(self):
+        return self.find_element(*self.tagname_loc).text
+
     save_button_loc = (By.XPATH, ".//*[@id='personalForm']/div[6]/div/div[2]/button")
     modify_button_loc = (By.XPATH, ".//*[@id='personalForm']/div[3]/div/div[2]/p[3]/a")
 
