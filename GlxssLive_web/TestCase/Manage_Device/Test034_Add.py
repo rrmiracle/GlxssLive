@@ -1,13 +1,10 @@
-from selenium import webdriver
-from Case.User.Data import Data
-from Case.User.update import Login, Update
+from GlxssLive_web.Data.Data import Data
+from GlxssLive_web.TestCase.models import function, myunit
+from GlxssLive_web.TestCase.Page_obj.rolemanagePage import rolemanage
 import unittest
-from Case.DepartmentManagement.depmanagement import DepartmentManagement
-from .devicemanagement import DeviceManagement
-from Case.BusinessManagement.businessmanangement import BusinessManagement
 
 
-class Test034_Add(unittest.TestCase):
+class Test034_Device_Add_P1(myunit.MyTest_login):
     def setUp(self):
         self.driver = webdriver.Firefox()
         l = Login(self.driver)

@@ -22,15 +22,6 @@ class usermanage(sidemenu):
         self.switch_to_frame()
         time.sleep(1)
 
-    tagname_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[1]/h5")
-    sub_tagname_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div[1]/h5")
-
-    def tagname(self):
-        return self.find_element(*self.tagname_loc).text
-
-    def sub_tagname(self):
-        return self.find_element(*self.sub_tagname_loc).text
-
     add_button_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[1]/div/a[1]/i")
     modify_button_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[1]/div/a[2]/i")
     delete_button_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[1]/div/a[3]/i")
@@ -77,29 +68,29 @@ class usermanage(sidemenu):
     user_add_department_loc = (By.ID, "deptType_chosen")
     user_add_role_loc = (By.NAME, "userCheckList")
 
-    def name(self, name):
+    def _name(self, name):
         self.find_element(*self.user_add_name_loc).send_keys(name)
 
     def name_clear(self):
         self.find_element(*self.user_add_name_loc).clear()
         time.sleep(1)
 
-    def email(self, email):
+    def _email(self, email):
         self.find_element(*self.user_add_email_loc).send_keys(email)
 
-    def password(self, password):
+    def _password(self, password):
         self.find_element(*self.user_add_password_loc).send_keys(password)
 
-    def confirm_password(self, confirmpsd):
+    def _confirm_password(self, confirmpsd):
         self.find_element(*self.user_add_confirmpsd_loc).send_keys(confirmpsd)
 
-    def phone(self, phone):
+    def _phone(self, phone):
         self.find_element(*self.user_add_phone_loc).send_keys(phone)
 
-    def department(self):
+    def _department(self):
         return self.find_element(*self.user_add_department_loc)
 
-    def description(self, description):
+    def _description(self, description):
         self.find_element(*self.user_add_description_loc).send_keys(description)
 
     def description_clear(self):
@@ -114,16 +105,16 @@ class usermanage(sidemenu):
         self.find_element(*self.user_add_role_loc).click()
 
     def add_user(self, name, email, password, confirmpsd, phone, description=""):
-        self.name(name)
-        self.email(email)
-        self.password(password)
-        self.confirm_password(confirmpsd)
-        self.phone(phone)
-        self.description(description)
+        self._name(name)
+        self._email(email)
+        self._password(password)
+        self._confirm_password(confirmpsd)
+        self._phone(phone)
+        self._description(description)
 
     def modify_user_input(self, name, description=""):
-        self.name(name)
-        self.description(description)
+        self._name(name)
+        self._description(description)
 
     def status(self):
         bsname = self.find_element(*self.user_add_company_loc)
@@ -135,8 +126,8 @@ class usermanage(sidemenu):
     user_add_department_2_loc = (By.XPATH, ".//*[@id='deptType_chosen']/div/ul/li[2]")
 
     def change_department(self):
-        q = self.department().get_attribute("innerText")
-        self.department().click()
+        q = self._department().get_attribute("innerText")
+        self._department().click()
         if q == "选择所属部门":
             try:
                 self.find_element(*self.user_add_department_1_loc).click()
@@ -230,6 +221,18 @@ class usermanage(sidemenu):
             else:
                 print("Error")
 
+    def special_uncheck(self):
+        try:
+            q = self.find_elements(*self.user_add_special_checkbox_loc)
+            for i in q:
+                if i.is_selected():
+                    i.click()
+        except NoSuchElementException:
+            if self.find_element(*self.user_add_special_loc).get_attribute("innerText") == "暂无数据":
+                print("No special defined")
+            else:
+                print("Error")
+
     list_email_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[7]")
 
     def email_list(self):
@@ -240,7 +243,7 @@ class usermanage(sidemenu):
     error_hint_company_loc = (By.ID, "bsType-error")
     error_hint_password_loc = (By.ID, "psd-error")
     error_hint_confirmpsd_loc = (By.ID, "confirm-error")
-    error_hint_email_loc = (By.ID, "userManager.email-error")
+    error_hint_email_loc = (By.ID, "email-error")
     error_hint_phone_loc = (By.ID, "phone-error")
 
     def error_name(self):

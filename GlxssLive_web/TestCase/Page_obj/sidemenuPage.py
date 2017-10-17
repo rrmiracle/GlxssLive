@@ -60,6 +60,9 @@ class sidemenu(Page):
         self.find_element(*self.my_company_loc).click()
         time.sleep(1)
 
+    def company_status(self):
+        return self.find_element(*self.company_loc).get_property("isContentEditable")
+
     confirm_button_loc = (By.XPATH, "html/body/div[3]/div[7]/button[2]")
     cancel_button_loc = (By.XPATH, "html/body/div[3]/div[7]/button[1]")
 
@@ -70,4 +73,15 @@ class sidemenu(Page):
     def cancel(self):
         self.find_element(*self.cancel_button_loc).click()
         time.sleep(1)
+
+    tagname_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[1]/h5")
+    sub_tagname_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div[1]/h5")
+
+    def tagname(self):
+        return self.find_element(*self.tagname_loc).text
+
+    def sub_tagname(self):
+        return self.find_element(*self.sub_tagname_loc).text
+
+
 

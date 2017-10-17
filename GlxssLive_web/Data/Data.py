@@ -17,7 +17,8 @@ class Data:
     mobile = "138"+str(random.randint(10000000, 20000000))
     name = "test"
 
-    url = "https://jdev.llvision.com"
+    # url = "https://jdev.llvision.com"
+    url = "http://jdev.llvision.com:35012"
     login_url = "https://jdev.llvision.com/login.html"
     register_url = "https://jdev.llvision.com/register.html"
     main_url = "https://jdev.llvision.com/index.html"

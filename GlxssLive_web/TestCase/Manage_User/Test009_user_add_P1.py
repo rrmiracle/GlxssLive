@@ -6,7 +6,7 @@ import unittest
 
 class Test009_User_Add_P1(myunit.MyTest_login):
 
-    def test_adduser(self):
+    def test_add_user(self):
         '''添加用户'''
         u = usermanage(self.driver)
         u.open_usermanage()
