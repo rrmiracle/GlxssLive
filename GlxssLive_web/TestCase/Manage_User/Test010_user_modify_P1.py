@@ -10,14 +10,14 @@ class Test010_User_Modify_P1(myunit.MyTest_login):
         u = usermanage(self.driver)
         u.open_usermanage()
         self.assertEqual(u.verify(), True)
-        u.modify_user()
+        u.modify_obj()
         self.assertEqual(u.sub_tagname(), "用户管理-修改")
         u.status()
         self.assertEqual(u.status(), ("true", "true", "true"))
         u.name_clear()
         u.modify_user_input("update")
         u.modify_save()
-        self.assertEqual(u.result(), "操作成功")
+        self.assertEqual(u.success(), True)
         function.screenshot(self.driver, "modify_name.jpg")
 
     def test_modify_description(self):
@@ -25,11 +25,11 @@ class Test010_User_Modify_P1(myunit.MyTest_login):
         u = usermanage(self.driver)
         u.open_usermanage()
         self.assertEqual(u.verify(), True)
-        u.modify_user()
+        u.modify_obj()
         u.description_clear()
         u.modify_user_input("", "update")
         u.modify_save()
-        self.assertEqual(u.result(), "操作成功")
+        self.assertEqual(u.success(), True)
         function.screenshot(self.driver, "modify_description.jpg")
 
     def test_modify_type(self):
@@ -37,10 +37,10 @@ class Test010_User_Modify_P1(myunit.MyTest_login):
         u = usermanage(self.driver)
         u.open_usermanage()
         self.assertEqual(u.verify(), True)
-        u.modify_user()
+        u.modify_obj()
         u.change_type()
         u.modify_save()
-        self.assertEqual(u.result(), "操作成功")
+        self.assertEqual(u.success(), True)
         function.screenshot(self.driver, "modify_type.jpg")
 
     def test_modify_department(self):
@@ -48,10 +48,10 @@ class Test010_User_Modify_P1(myunit.MyTest_login):
         u = usermanage(self.driver)
         u.open_usermanage()
         self.assertEqual(u.verify(), True)
-        u.modify_user()
+        u.modify_obj()
         u.change_department()
         u.modify_save()
-        self.assertEqual(u.result(), "操作成功")
+        self.assertEqual(u.success(), True)
         function.screenshot(self.driver, "modify_department.jpg")
 
     def test_modify_role(self):
@@ -59,10 +59,10 @@ class Test010_User_Modify_P1(myunit.MyTest_login):
         u = usermanage(self.driver)
         u.open_usermanage()
         self.assertEqual(u.verify(), True)
-        u.modify_user()
+        u.modify_obj()
         u.role()
         u.modify_save()
-        self.assertEqual(u.result(), "操作成功")
+        self.assertEqual(u.success(), True)
         function.screenshot(self.driver, "modify_role.jpg")
 
     def test_modify_special(self):
@@ -70,10 +70,10 @@ class Test010_User_Modify_P1(myunit.MyTest_login):
         u = usermanage(self.driver)
         u.open_usermanage()
         self.assertEqual(u.verify(), True)
-        u.modify_user()
+        u.modify_obj()
         u.change_special()
         u.modify_save()
-        self.assertEqual(u.result(), "操作成功")
+        self.assertEqual(u.success(), True)
         function.screenshot(self.driver, "modify_special.jpg")
 
     def test_back(self):
@@ -81,7 +81,7 @@ class Test010_User_Modify_P1(myunit.MyTest_login):
         u = usermanage(self.driver)
         u.open_usermanage()
         self.assertEqual(u.verify(), True)
-        u.modify_user()
+        u.modify_obj()
         u.role()
         u.modify_back()
         self.assertEqual(u.verify(), True)

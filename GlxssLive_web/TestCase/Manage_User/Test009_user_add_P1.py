@@ -17,7 +17,7 @@ class Test009_User_Add_P1(myunit.MyTest_login):
         u.type()
         u.select_company()
         u.add_save()
-        self.assertEqual(u.result(), "操作成功")
+        self.assertEqual(u.success(), True)
         function.screenshot(self.driver, "add_user.jpg")
 
     def test_back(self):

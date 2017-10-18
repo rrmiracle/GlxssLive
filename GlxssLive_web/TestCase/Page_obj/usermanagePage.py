@@ -8,6 +8,9 @@ from selenium.common.exceptions import NoSuchElementException
 class usermanage(sidemenu):
     '''用户管理页面'''
 
+    tagname_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[1]/h5")
+    sub_tagname_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div[1]/h5")
+
     def verify(self):
         return self.tagname() == "用户管理"
 
@@ -28,35 +31,6 @@ class usermanage(sidemenu):
 
     checkbox_1_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]/label/span")
     checkbox_2_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[2]/div/table/tbody/tr[2]/td[1]/label/span")
-
-    def add(self):
-        self.find_element(*self.add_button_loc).click()
-        time.sleep(1)
-
-    def modify(self):
-        self.find_element(*self.modify_button_loc).click()
-        time.sleep(1)
-
-    def delete(self):
-        self.find_element(*self.delete_button_loc).click()
-        time.sleep(1)
-
-    def select(self):
-        self.find_element(*self.checkbox_1_loc).click()
-        time.sleep(1)
-
-    def multi_select(self):
-        self.find_element(*self.checkbox_1_loc).click()
-        self.find_element(*self.checkbox_2_loc).click()
-        time.sleep(1)
-
-    def modify_user(self):
-        self.select()
-        self.modify()
-
-    def delete_user(self):
-        self.select()
-        self.delete()
 
     user_add_name_loc = (By.NAME, "userManager.username")
     user_add_description_loc = (By.NAME, "userManager.introduce")
@@ -178,21 +152,8 @@ class usermanage(sidemenu):
 
     add_save_button_loc = (By.XPATH, ".//*[@id='commentForm']/div[13]/div/button")
     add_back_button_loc = (By.XPATH, ".//*[@id='commentForm']/div[13]/div/a")
-
-    def add_save(self):
-        self.find_element(*self.add_save_button_loc).click()
-
-    def add_back(self):
-        self.find_element(*self.add_back_button_loc).click()
-
     modify_save_button_loc = (By.XPATH, ".//*[@id='commentForm']/div[11]/div/button")
     modify_back_button_loc = (By.XPATH, ".//*[@id='commentForm']/div[11]/div/a")
-
-    def modify_save(self):
-        self.find_element(*self.modify_save_button_loc).click()
-
-    def modify_back(self):
-        self.find_element(*self.modify_back_button_loc).click()
 
     user_add_special_checkbox_loc = (By.NAME, "specialtyCheckList")
     user_add_special_loc = (By.XPATH, ".//*[@id='commentForm']/div[9]/div/ul/li/div/span")

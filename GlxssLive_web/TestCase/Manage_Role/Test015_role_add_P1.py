@@ -16,7 +16,7 @@ class Test015_Role_Add_P1(myunit.MyTest_login):
         u.add_role(Data.rolename, "备注")
         u.select_company()
         u.add_save()
-        self.assertEqual(u.result(), "操作成功")
+        self.assertEqual(u.success(), True)
         function.screenshot(self.driver, "add_role.jpg")
 
     def test_add_role_back(self):

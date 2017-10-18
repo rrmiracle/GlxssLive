@@ -14,7 +14,6 @@ class sidemenu(Page):
     side_menu_loc = (By.XPATH, ".//*[@id='page-wrapper']/div[1]/nav/div/a")
     drop_down_loc = (By.XPATH, ".//*[@id='side-menu']/li[1]/div[1]/a/span/span[2]/b")
     logout_loc = (By.XPATH, ".//*[@id='side-menu']/li[1]/div[1]/ul/li[3]/a")
-    profile_loc = (By.XPATH, ".//*[@id='side-menu']/li[1]/div[1]/ul/li[1]/a")
 
     def expand(self):
         self.find_element(*self.side_menu_loc).click()
@@ -22,14 +21,6 @@ class sidemenu(Page):
 
     def drop_down_menu(self):
         self.find_element(*self.drop_down_loc).click()
-        time.sleep(1)
-
-    def open_profile(self):
-        self.expand()
-        self.drop_down_menu()
-        self.find_element(*self.profile_loc).click()
-        time.sleep(1)
-        self.switch_to_frame()
         time.sleep(1)
 
     def logout(self):
@@ -74,14 +65,68 @@ class sidemenu(Page):
         self.find_element(*self.cancel_button_loc).click()
         time.sleep(1)
 
-    tagname_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[1]/h5")
-    sub_tagname_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div[1]/h5")
+    tagname_loc = None
+    sub_tagname_loc = None
 
     def tagname(self):
         return self.find_element(*self.tagname_loc).text
 
     def sub_tagname(self):
         return self.find_element(*self.sub_tagname_loc).text
+
+    add_button_loc = None
+    modify_button_loc = None
+    delete_button_loc = None
+
+    def add(self):
+        self.find_element(*self.add_button_loc).click()
+        time.sleep(1)
+
+    def modify(self):
+        self.find_element(*self.modify_button_loc).click()
+        time.sleep(1)
+
+    def delete(self):
+        self.find_element(*self.delete_button_loc).click()
+        time.sleep(1)
+
+    checkbox_1_loc = None
+    checkbox_2_loc = None
+
+    def select(self):
+        self.find_element(*self.checkbox_1_loc).click()
+        time.sleep(1)
+
+    def multi_select(self):
+        self.find_element(*self.checkbox_1_loc).click()
+        self.find_element(*self.checkbox_2_loc).click()
+        time.sleep(1)
+
+    def modify_obj(self):
+        self.select()
+        self.modify()
+
+    def delete_obj(self):
+        self.select()
+        self.delete()
+
+    add_save_button_loc = None
+    add_back_button_loc = None
+
+    def add_save(self):
+        self.find_element(*self.add_save_button_loc).click()
+
+    def add_back(self):
+        self.find_element(*self.add_back_button_loc).click()
+
+    modify_save_button_loc = None
+    modify_back_button_loc = None
+
+    def modify_save(self):
+        self.find_element(*self.modify_save_button_loc).click()
+
+    def modify_back(self):
+        self.find_element(*self.modify_back_button_loc).click()
 
 
 

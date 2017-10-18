@@ -10,7 +10,7 @@ class Test020_Role_Modify_Error(myunit.MyTest_login):
         u = rolemanage(self.driver)
         u.open_rolemanage()
         self.assertEqual(u.verify(), True)
-        u.modify_user()
+        u.modify_obj()
         self.assertEqual(u.sub_tagname(), "角色管理-修改")
         u.clear_name()
         u.clear_remark()

@@ -5,24 +5,24 @@ import unittest
 
 class Test017_Role_Delete_P1(myunit.MyTest_login):
 
-    def test_delete_role(self):
+    def test_delete(self):
         '''删除角色'''
         u = rolemanage(self.driver)
         u.open_rolemanage()
         self.assertEqual(u.verify(), True)
-        u.delete_user()
+        u.delete_obj()
         self.assertEqual(u.result(), "您确定要删除这条信息吗")
         u.confirm()
         self.assertEqual(u.result(), "删除成功")
         function.screenshot(self.driver, "delete_role.jpg")
 
-    def test_delete_cancle(self):
+    def test_cancle(self):
         '''取消删除角色'''
         u = rolemanage(self.driver)
         u.open_rolemanage()
         self.assertEqual(u.verify(), True)
         n = u.name_list()
-        u.delete_user()
+        u.delete_obj()
         self.assertEqual(u.result(), "您确定要删除这条信息吗")
         u.cancel()
         self.assertEqual(u.name_list(), n)

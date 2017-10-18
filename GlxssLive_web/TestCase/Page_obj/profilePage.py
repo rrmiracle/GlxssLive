@@ -6,8 +6,19 @@ import time
 class profile(sidemenu):
     '''个人信息页面'''
 
+    profile_loc = (By.XPATH, ".//*[@id='side-menu']/li[1]/div[1]/ul/li[1]/a")
+
+    def open_profile(self):
+        self.expand()
+        self.drop_down_menu()
+        self.find_element(*self.profile_loc).click()
+        time.sleep(1)
+        self.switch_to_frame()
+        time.sleep(1)
+
     avatar_loc = (By.XPATH, ".//*[@id='personalForm']/div[1]/div/div[2]/p[2]/input")
     name_loc = (By.NAME, "username")
+    tagname_loc = (By.XPATH, ".//*[@id='perapp']/div/div/div/div[1]/h5")
 
     def verify(self):
         return self.tagname() == "个人中心"
@@ -22,11 +33,6 @@ class profile(sidemenu):
     def clear(self):
         self.find_element(*self.name_loc).clear()
         time.sleep(1)
-
-    tagname_loc = (By.XPATH, ".//*[@id='perapp']/div/div/div/div[1]/h5")
-
-    def tagname(self):
-        return self.find_element(*self.tagname_loc).text
 
     save_button_loc = (By.XPATH, ".//*[@id='personalForm']/div[6]/div/div[2]/button")
     modify_button_loc = (By.XPATH, ".//*[@id='personalForm']/div[3]/div/div[2]/p[3]/a")
