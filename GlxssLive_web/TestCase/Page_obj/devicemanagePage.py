@@ -5,6 +5,9 @@ import time
 
 class devicemanage(sidemenu):
 
+    tagname_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[1]/h5")
+    sub_tagname_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div[1]/h5")
+
     def verify(self):
         return self.tagname() == "设备管理"
 
@@ -21,7 +24,7 @@ class devicemanage(sidemenu):
 
     add_button_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[1]/div/a[1]/i")
     modify_button_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[1]/div/a[2]/i")
-    delete_button_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[1]/div/a[2]/i")
+    delete_button_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[1]/div/a[3]/i")
 
     checkbox_1_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]/label/span")
     checkbox_2_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[2]/div/table/tbody/tr[2]/td[1]/label/span")
@@ -34,10 +37,10 @@ class devicemanage(sidemenu):
         self.find_element(*self.device_add_name_loc).send_keys(name)
 
     def _version(self, version):
-        self.find_element(*self.device_add_name_loc).send_keys(version)
+        self.find_element(*self.device_add_version_loc).send_keys(version)
 
     def _serial(self, serial):
-        self.find_element(*self.device_add_name_loc).send_keys(serial)
+        self.find_element(*self.device_add_serial_loc).send_keys(serial)
 
     def add_device(self, name, version, serial):
         self._name(name)
@@ -52,6 +55,13 @@ class devicemanage(sidemenu):
 
     def serial_clear(self):
         self.find_element(*self.device_add_serial_loc).clear()
+
+    company_loc = (By.ID, "bssDept_chosen")
+    my_company_loc = (By.XPATH, ".//*[@id='bssDept_chosen']/div/ul/li")
+    modify_company_loc = (By.NAME, "bssEquipment.bsName")
+
+    def company_status(self):
+        return self.find_element(*self.modify_company_loc).get_property("isContentEditable")
 
     add_save_button_loc = (By.XPATH, ".//*[@id='commentForm']/div[6]/div/button")
     add_back_button_loc = (By.XPATH, ".//*[@id='commentForm']/div[6]/div/a")
