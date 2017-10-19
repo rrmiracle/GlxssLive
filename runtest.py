@@ -7,7 +7,7 @@ import os
 fr = os.getcwd()
 fp = fr+'\GlxssLive_web\TestCase'
 fp = fp.replace('\\', '/')
-discover = unittest.defaultTestLoader.discover(fp, pattern="Test001*.py")
+discover = unittest.defaultTestLoader.discover(fp, pattern="Test00*.py")
 
 
 if __name__ == "__main__":
