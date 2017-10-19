@@ -1,8 +1,6 @@
 from selenium.webdriver.common.by import By
 from .devicemanagePage import devicemanage
 import time
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException
 
 
 class specialmanage(devicemanage):
