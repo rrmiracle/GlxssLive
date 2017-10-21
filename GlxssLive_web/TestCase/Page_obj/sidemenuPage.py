@@ -115,6 +115,7 @@ class sidemenu(Page):
 
     def add_save(self):
         self.find_element(*self.add_save_button_loc).click()
+        time.sleep(1)
 
     def add_back(self):
         self.find_element(*self.add_back_button_loc).click()

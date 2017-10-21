@@ -7,6 +7,7 @@ import random
 class Test026_Company_Modify_Error(myunit.MyTest_login):
 
     def test_company_modify_error1(self):
+        '''输入为空'''
         c = companymanage(self.driver)
         c.open_companymanage()
         self.assertEqual(c.verify(), True)
@@ -24,6 +25,7 @@ class Test026_Company_Modify_Error(myunit.MyTest_login):
         function.screenshot(self.driver, "modify_company_blank.jpg")
 
     def test_company_modify_error2(self):
+        '''人数上限输入无效'''
         c = companymanage(self.driver)
         c.open_companymanage()
         self.assertEqual(c.verify(), True)
