@@ -77,20 +77,16 @@ class devicemanage(sidemenu):
     error_hint_company_loc = (By.ID, "bssDept-error")
 
     def error_name(self):
-        msg = self.driver.find_element_by_id("bssEquipment.name-error").text
-        return msg
+        return self.find_element(*self.error_hint_name_loc).text
 
     def error_version(self):
-        msg = self.driver.find_element_by_id("version-error").text
-        return msg
+        return self.find_element(*self.error_hint_version_loc).text
 
     def error_serial(self):
-        msg = self.driver.find_element_by_id("bssEquipment.serial-error").text
-        return msg
+        return self.find_element(*self.error_hint_serial_loc).text
 
     def error_company(self):
-        msg = self.driver.find_element_by_id("bssDept-error").text
-        return msg
+        return self.find_element(*self.error_hint_company_loc).text
 
 
 
