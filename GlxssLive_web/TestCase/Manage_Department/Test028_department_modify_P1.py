@@ -1,3 +1,4 @@
+from GlxssLive_web.Data.Data import Data
 from GlxssLive_web.TestCase.models import function, myunit
 from GlxssLive_web.TestCase.Page_obj.departmentmanagePage import departmentmanage
 import unittest
@@ -13,7 +14,7 @@ class Test028_Department_Modify_P1(myunit.MyTest_login):
         d.modify_obj()
         self.assertEqual(d.sub_tagname(), "部门管理-修改")
         d.name_clear()
-        d.add_department("Update", "")
+        d.add_department(Data.depname+"Update", "")
         d.add_save()
         self.assertEqual(d.success(), True)
         function.screenshot(self.driver, "modify_department_name.jpg")

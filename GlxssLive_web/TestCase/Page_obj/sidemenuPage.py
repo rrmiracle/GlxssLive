@@ -105,10 +105,12 @@ class sidemenu(Page):
     def modify_obj(self):
         self.select()
         self.modify()
+        time.sleep(1)
 
     def delete_obj(self):
         self.select()
         self.delete()
+        time.sleep(1)
 
     add_save_button_loc = None
     add_back_button_loc = None
@@ -125,9 +127,11 @@ class sidemenu(Page):
 
     def modify_save(self):
         self.find_element(*self.modify_save_button_loc).click()
+        time.sleep(1)
 
     def modify_back(self):
         self.find_element(*self.modify_back_button_loc).click()
+        time.sleep(1)
 
 
 

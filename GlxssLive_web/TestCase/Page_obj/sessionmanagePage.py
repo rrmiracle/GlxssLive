@@ -31,8 +31,8 @@ class sessionmanage(sidemenu):
         self.find_element(*self.check_button_loc).click()
         time.sleep(1)
 
-    checkbox_1_loc = (By.XPATH, ".//*[@id='wmmapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]/label/span")
-    checkbox_2_loc = (By.XPATH, ".//*[@id='wmmapp']/div/div/div/div[2]/div/table/tbody/tr[2]/td[1]/label/span")
+    checkbox_1_loc = (By.XPATH, ".//*[@id='wmmapp']/div/div/div/div[3]/div/table/tbody/tr[1]/td[1]/label/span")
+    checkbox_2_loc = (By.XPATH, ".//*[@id='wmmapp']/div/div/div/div[3]/div/table/tbody/tr[2]/td[1]/label/span")
 
     def session_check(self):
         self.find_element(*self.checkbox_1_loc).click()
@@ -40,7 +40,7 @@ class sessionmanage(sidemenu):
         self.check()
         time.sleep(1)
 
-    check_back_button_loc = (By.XPATH, ".//*[@id='wmmapp']/div/div/div/div[2]/div/div/div/a")
+    check_back_button_loc = (By.XPATH, "//*[@id='wmmapp']/div/div/div/div[4]/div/div/div/a")
 
     def check_back(self):
         self.find_element(*self.check_back_button_loc).click()
@@ -59,7 +59,7 @@ class sessionmanage(sidemenu):
             self._name(Keys.BACK_SPACE)
 
     def _keyword(self, keyword):
-        self.find_element(*self.session_modify_name_loc).send_keys(keyword)
+        self.find_element(*self.session_modify_keyword_loc).send_keys(keyword)
 
     def keyword_clear(self):
         js = "var q = document.getElementsByName('wmmManager.keyword')[0]; return q.value"
@@ -74,7 +74,7 @@ class sessionmanage(sidemenu):
     modify_save_button_loc = (By.XPATH, ".//*[@id='wssessionroomForm']/div[4]/div/button")
     modify_back_button_loc = (By.XPATH, ".//*[@id='wssessionroomForm']/div[4]/div/a")
 
-    list_name_loc = (By.XPATH, ".//*[@id='wmmapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[4]")
+    list_name_loc = (By.XPATH, ".//*[@id='wmmapp']/div/div/div/div[3]/div/table/tbody/tr[1]/td[4]")
 
     def name_list(self):
         return self.find_element(*self.list_name_loc).get_attribute("innerText")

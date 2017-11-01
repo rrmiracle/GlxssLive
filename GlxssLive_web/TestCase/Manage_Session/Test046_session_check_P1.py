@@ -11,7 +11,7 @@ class Test046_Session_Check_P1(myunit.MyTest_login):
         s.open_sessionmanage()
         self.assertEqual(s.verify(), True)
         s.session_check()
-        self.assertEqual(s.sub_tagname(), "会话详情")
+        self.assertEqual(s.tagname(), "会话详情")
         function.screenshot(self.driver, "session_detail.jpg")
         s.check_back()
         self.assertEqual(s.verify(), True)

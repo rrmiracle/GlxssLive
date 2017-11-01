@@ -142,7 +142,7 @@ class Test013_User_Add_Error(myunit.MyTest_login):
         self.assertEqual(u.verify(), True)
         u.add()
         self.assertEqual(u.sub_tagname(), "用户管理-新增")
-        u.add_user(Data.name, "Test", Data.password, Data.password, Data.mobile)
+        u.add_user(Data.name, "Testtest", Data.password, Data.password, Data.mobile)
         u.select_company()
         u.type()
         u.add_save()

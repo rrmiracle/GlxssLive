@@ -36,7 +36,7 @@ class specialmanage(devicemanage):
 
     modify_company_loc = (By.NAME, "bssBusinessSpecialty.bsName")
 
-    list_name_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[2]/div/table/tbody/tr/td[3]/span")
+    list_name_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[3]/div/table/tbody/tr/td[3]/span")
 
     def name_list(self):
         return self.find_element(*self.list_name_loc).get_attribute("innerText")

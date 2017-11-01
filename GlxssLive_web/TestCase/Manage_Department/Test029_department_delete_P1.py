@@ -24,7 +24,7 @@ class Test029_Department_Delete_P1(myunit.MyTest_login):
         self.assertEqual(d.verify(), True)
         n = d.name_list()
         d.deptstatus()
-        d.delete()
+        d.delete_obj()
         self.assertEqual(d.result(), "您确定要删除这条信息吗")
         d.cancel()
         self.assertEqual(d.name_list(), n)

@@ -27,5 +27,5 @@ class MyTest_login(unittest.TestCase):
         print("Start=====")
 
     def tearDown(self):
-        self.driver.quit()
+        # self.driver.quit()
         print("=====Finish")

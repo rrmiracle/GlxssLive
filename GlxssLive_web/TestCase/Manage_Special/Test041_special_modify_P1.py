@@ -14,7 +14,7 @@ class Test041_Special_Modify_P1(myunit.MyTest_login):
         self.assertEqual(s.sub_tagname(), "企业专业表-修改")
         self.assertEqual(s.company_status(), False)
         s.name_clear()
-        s.add_special("Updaate")
+        s.add_special("Update")
         s.add_save()
         function.screenshot(self.driver, "modify_special_name.jpg")
 
@@ -26,7 +26,7 @@ class Test041_Special_Modify_P1(myunit.MyTest_login):
         s.modify_obj()
         self.assertEqual(s.sub_tagname(), "企业专业表-修改")
         s.name_clear()
-        s.add_special("Updaate")
+        s.add_special("Update")
         s.add_back()
         function.screenshot(self.driver, "modify_special_back.jpg")
 

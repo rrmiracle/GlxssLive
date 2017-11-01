@@ -6,6 +6,9 @@ import time
 class profile(sidemenu):
     '''个人信息页面'''
 
+    def switch_to_frame(self):
+        self.driver.switch_to.frame(1)
+
     profile_loc = (By.XPATH, ".//*[@id='side-menu']/li[1]/div[1]/ul/li[1]/a")
 
     def open_profile(self):
@@ -14,7 +17,7 @@ class profile(sidemenu):
         self.find_element(*self.profile_loc).click()
         time.sleep(1)
         self.switch_to_frame()
-        time.sleep(1)
+        time.sleep(2)
 
     avatar_loc = (By.XPATH, ".//*[@id='personalForm']/div[1]/div/div[2]/p[2]/input")
     name_loc = (By.NAME, "username")

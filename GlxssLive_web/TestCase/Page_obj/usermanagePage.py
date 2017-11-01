@@ -29,8 +29,8 @@ class usermanage(sidemenu):
     modify_button_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[1]/div/a[2]/i")
     delete_button_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[1]/div/a[3]/i")
 
-    checkbox_1_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]/label/span")
-    checkbox_2_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[2]/div/table/tbody/tr[2]/td[1]/label/span")
+    checkbox_1_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[3]/div/table/tbody/tr[1]/td[1]/label/span")
+    checkbox_2_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[3]/div/table/tbody/tr[2]/td[1]/label/span")
 
     user_add_name_loc = (By.NAME, "userManager.username")
     user_add_description_loc = (By.NAME, "userManager.introduce")
@@ -40,7 +40,7 @@ class usermanage(sidemenu):
     user_add_phone_loc = (By.NAME, "phone")
     user_add_company_loc = (By.NAME, "userManager.bsName")
     user_add_department_loc = (By.ID, "deptType_chosen")
-    user_add_role_loc = (By.NAME, "userCheckList")
+    user_add_role_loc = (By.CLASS_NAME, "lbl")
 
     def _name(self, name):
         self.find_element(*self.user_add_name_loc).send_keys(name)
@@ -76,7 +76,7 @@ class usermanage(sidemenu):
         time.sleep(1)
 
     def role(self):
-        self.find_element(*self.user_add_role_loc).click()
+        self.find_elements(*self.user_add_role_loc)[0].click()
 
     def add_user(self, name, email, password, confirmpsd, phone, description=""):
         self._name(name)
@@ -136,10 +136,10 @@ class usermanage(sidemenu):
         if q == "非专家":
             try:
                 p = self.find_elements(*self.user_add_special_checkbox_loc)
-                print("============special")
-                for i in p:
-                    if i.is_selected() == False:
-                        i.click()
+                for i in range(1, len(q)+1):
+                    checkbox_loc = (By.XPATH, ".//*[@id='commentForm']/div[9]/div/ul/li["+str(i)+"]/a/label/span")
+                    if self.find_element(*checkbox_loc).get_property("previousElementSibling").get_property("checked") == False:
+                        self.find_element(*checkbox_loc).click()
                 self.type(2)
             except NoSuchElementException:
                 if self.find_element(*self.user_add_special_loc).get_attribute("innerText") == "暂无数据":
@@ -156,6 +156,7 @@ class usermanage(sidemenu):
     modify_back_button_loc = (By.XPATH, ".//*[@id='commentForm']/div[11]/div/a")
 
     user_add_special_checkbox_loc = (By.NAME, "specialtyCheckList")
+    user_add_special_checkbox_default_loc = (By.XPATH, ".//*[@id='commentForm']/div[9]/div/ul/li[1]/a/label/span")
     user_add_special_loc = (By.XPATH, ".//*[@id='commentForm']/div[9]/div/ul/li/div/span")
 
     def change_special(self):
@@ -164,18 +165,20 @@ class usermanage(sidemenu):
             number = 0
             if len(q) > 1:
                 # 专业数>1
-                for i in q:
-                    i.click()
-                    if i.is_selected():
+                for i in range(1, len(q)+1):
+                    checkbox_loc = (By.XPATH, ".//*[@id='commentForm']/div[9]/div/ul/li["+str(i)+"]/a/label/span")
+                    self.find_element(*checkbox_loc).click()
+                    if self.find_element(*checkbox_loc).get_property("previousElementSibling").get_property("checked"):
                         number = number+1
+                print(number)
                 if number == 0:
-                    q[0].click()
+                    self.find_element(*self.user_add_special_checkbox_default_loc).click()
             else:
                 # 专业数=1
-                if q[0].is_selected():
+                if self.find_element(*self.user_add_special_checkbox_default_loc).is_selected():
                     print("Can't change special")
                 else:
-                    q[0].click()
+                    self.find_element(*self.user_add_special_checkbox_default_loc).click()
         except NoSuchElementException:
             if self.find_element(*self.user_add_special_loc).get_attribute("innerText") == "暂无数据":
                 print("No special defined")
@@ -185,16 +188,17 @@ class usermanage(sidemenu):
     def special_uncheck(self):
         try:
             q = self.find_elements(*self.user_add_special_checkbox_loc)
-            for i in q:
-                if i.is_selected():
-                    i.click()
+            for i in range(1, len(q) + 1):
+                checkbox_loc = (By.XPATH, ".//*[@id='commentForm']/div[9]/div/ul/li[" + str(i) + "]/a/label/span")
+                if self.find_element(*checkbox_loc).get_property("previousElementSibling").get_property("checked"):
+                    self.find_element(*checkbox_loc).click()
         except NoSuchElementException:
             if self.find_element(*self.user_add_special_loc).get_attribute("innerText") == "暂无数据":
                 print("No special defined")
             else:
                 print("Error")
 
-    list_email_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[7]")
+    list_email_loc = (By.XPATH, ".//*[@id='userapp']/div/div/div/div[3]/div/table/tbody/tr[1]/td[7]")
 
     def email_list(self):
         return self.find_element(*self.list_email_loc).get_attribute("innerText")

@@ -60,6 +60,7 @@ class departmentmanage(devicemanage):
     list_loc = (By.TAG_NAME, "tbody")
     list_row_loc = (By.TAG_NAME, "tr")
     list_column_loc = (By.TAG_NAME, "td")
+    list_checkbox_loc = (By.CLASS_NAME, "lbl")
 
     def deptstatus(self, type = 1):
         trs = self.find_element(*self.list_loc).find_elements(*self.list_row_loc)
@@ -79,17 +80,17 @@ class departmentmanage(devicemanage):
         # 没有子部门的部门集合
         if type == 1:
             if len(q) > 0:
-                q[0].find_element_by_class_name("checkbox").click()
+                q[0].find_element(*self.list_checkbox_loc).click()
                 time.sleep(1)
         # 有子部门的部门集合
         if type == 2:
             if len(p) > 0:
-                p[0].find_element_by_class_name("checkbox").click()
+                p[0].find_element(*self.list_checkbox_loc).click()
                 time.sleep(1)
             else:
                 print("Please set superior department first")
 
-    list_name_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[2]/div/table/tbody/tr/td[2]")
+    list_name_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[3]/div/table/tbody/tr/td[2]")
 
     def name_list(self):
         return self.find_element(*self.list_name_loc).get_attribute("innerText")

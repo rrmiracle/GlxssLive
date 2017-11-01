@@ -62,6 +62,9 @@ class companymanage(devicemanage):
     company_add_trade_3_loc = (By.XPATH, ".//*[@id='trade_chosen']/div/ul/li[3]")
     company_add_trade_4_loc = (By.XPATH, ".//*[@id='trade_chosen']/div/ul/li[4]")
 
+    checkbox_1_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]/label/span")
+    checkbox_2_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[2]/div/table/tbody/tr[2]/td[1]/label/span")
+
     def select_trade(self, type=1):
         self.find_element(*self.company_add_trade_loc).click()
         time.sleep(1)

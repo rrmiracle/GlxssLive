@@ -26,8 +26,8 @@ class devicemanage(sidemenu):
     modify_button_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[1]/div/a[2]/i")
     delete_button_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[1]/div/a[3]/i")
 
-    checkbox_1_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]/label/span")
-    checkbox_2_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[2]/div/table/tbody/tr[2]/td[1]/label/span")
+    checkbox_1_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[3]/div/table/tbody/tr[1]/td[1]/label/span")
+    checkbox_2_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[3]/div/table/tbody/tr[2]/td[1]/label/span")
 
     device_add_name_loc = (By.NAME, "bssEquipment.name")
     device_add_version_loc = (By.NAME, "version")
@@ -66,7 +66,7 @@ class devicemanage(sidemenu):
     add_save_button_loc = (By.XPATH, ".//*[@id='commentForm']/div[6]/div/button")
     add_back_button_loc = (By.XPATH, ".//*[@id='commentForm']/div[6]/div/a")
 
-    list_serial_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[5]")
+    list_serial_loc = (By.XPATH, ".//*[@id='bssapp']/div/div/div/div[3]/div/table/tbody/tr[1]/td[5]")
 
     def serial_list(self):
         return self.find_element(*self.list_serial_loc).get_attribute("innerText")

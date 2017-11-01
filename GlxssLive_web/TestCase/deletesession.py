@@ -20,7 +20,7 @@ class Login:
     def login(self):
         self.driver.get("https://jdev.llvision.com")
         time.sleep(5)
-        self.input("gongren3@qq.com", "123456")
+        self.input("gongren16@qq.com", "123456")
         time.sleep(10)
         #手动输入验证码
         self.confirm()
@@ -59,8 +59,8 @@ class test_stability(unittest.TestCase):
         l.login()
         m = mysession(self.driver)
         m.open_mysession()
-        time.sleep(1)
-        checkbox = ".//*[@id='wmmapp']/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]/label/span"
+        time.sleep(2)
+        checkbox = ".//*[@id='wmmapp']/div/div/div/div[3]/div/table/tbody/tr[1]/td[1]/label/span"
         while(True):
             self.driver.find_element_by_xpath(checkbox).click()
             self.driver.find_element(By.XPATH, ".//*[@id='wmmapp']/div/div/div/div[1]/div/a[3]/i").click()
