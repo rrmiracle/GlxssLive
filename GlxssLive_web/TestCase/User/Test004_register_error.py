@@ -23,13 +23,13 @@ class Test004_Register_Error(myunit.MyTest):
         self.assertEqual(r.error_hint(), "注册：数据库中已存在该记录")
         function.screenshot(self.driver, "email_exist.jpg")
 
-    # def test_register_error3(self):
-    #     '''验证码不正确'''
-    #     r = register(self.driver)
-    #     r.goto_register()
-    #     r.register(Data.businesscode, Data.email, Data.name, Data.password, Data.password, "aaaaa")
-    #     self.assertEqual(r.error_hint(), "注册：验证码不正确")
-    #     function.screenshot(self.driver, "code_incorrect.jpg")
+    def test_register_error3(self):
+        '''验证码不正确'''
+        r = register(self.driver)
+        r.goto_register()
+        r.register(Data.businesscode, Data.email, Data.name, Data.password, Data.password, "aaaaa")
+        self.assertEqual(r.error_hint(), "注册：验证码不正确")
+        function.screenshot(self.driver, "code_incorrect.jpg")
 
     def test_register_error4(self):
         '''输入为空'''

@@ -26,7 +26,7 @@ class forgotpassword(register):
         self.find_element(*self.forgotpassword_email_loc).send_keys(email)
         self.find_element(*self.forgotpassword_new_loc).send_keys(password)
         self.find_element(*self.forgotpassword_confirm_loc).send_keys(confirmpsd)
-        # self.find_element(*self.forgotpassword_code_loc).send_keys(code)
+        self.find_element(*self.forgotpassword_code_loc).send_keys(code)
 
     def save(self):
         self.register_button()
@@ -34,6 +34,7 @@ class forgotpassword(register):
 
     def send_code(self):
         self.find_element(*self.forgotpassword_send_button_loc).click()
+        print(self.find_element(*self.forgotpassword_send_button_loc).text)
         time.sleep(30)
 
     result_loc = (By.XPATH, "html/body/div[3]/p")

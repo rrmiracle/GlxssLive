@@ -37,8 +37,7 @@ class Test007_ForgotPassword_Error(myunit.MyTest):
         '''密码不足6位'''
         f = forgotpassword(self.driver)
         f.goto_forgotpassword()
-        f.forgot_password(Data.realemail, "1", "1")
-        # f.forgot_password(Data.realemail, "1", "1", "111111")
+        f.forgot_password(Data.realemail, "1", "1", "111111")
         f.save()
         self.assertEqual(f.pop_error_hint(), "最少 6 个字")
         function.screenshot(self.driver, "forgot_password_new_less.jpg")
@@ -47,20 +46,19 @@ class Test007_ForgotPassword_Error(myunit.MyTest):
         '''确认密码不符'''
         f = forgotpassword(self.driver)
         f.goto_forgotpassword()
-        f.forgot_password(Data.realemail, Data.password, "1")
-        # f.forgot_password(Data.realemail, Data.password, "1", "111111")
+        f.forgot_password(Data.realemail, Data.password, "1", "111111")
         f.save()
         self.assertEqual(f.pop_error_hint(), "你的输入不相同")
         function.screenshot(self.driver, "forgot_password_confirm_diff.jpg")
 
-    def test_forgot_password_error6(self):
-        '''用户不存在'''
-        f = forgotpassword(self.driver)
-        f.goto_forgotpassword()
-        f.forgot_password("0000@test.com")
-        f.send_code()
-        self.assertEqual(f.error_hint(), "忘记密码：用户不存在")
-        function.screenshot(self.driver, "forgot_password_user_notexist.jpg")
+    # def test_forgot_password_error6(self):
+    #     '''用户不存在'''
+    #     f = forgotpassword(self.driver)
+    #     f.goto_forgotpassword()
+    #     f.forgot_password("0000@test.com")
+    #     f.send_code()
+    #     self.assertEqual(f.error_hint(), "忘记密码：用户不存在")
+    #     function.screenshot(self.driver, "forgot_password_user_notexist.jpg")
 
     # def test_forgot_password_error7(self):
     #     '''邮箱地址不正确'''

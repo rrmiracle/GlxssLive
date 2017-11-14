@@ -53,8 +53,9 @@ class register(Page):
         self.register_password(password)
         self.register_confirmpsd(confirmpsd)
         # self.register_code(code)
-        # time.sleep(10)
+        time.sleep(10)
         self.register_button()
+        time.sleep(2)
 
     error_hint_loc = (By.XPATH, ".//*[@id='registerForm']/h4")
     pop_error_loc = (By.CSS_SELECTOR, ".layui-layer-content")
