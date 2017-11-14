@@ -1,0 +1,4780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>GLXSS Live 测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>GLXSS Live 测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2017-11-14 14:40:27</p>
+<p class='attribute'><strong>Duration:</strong> 1:17:19.434367</p>
+<p class='attribute'><strong>Status:</strong> Pass 106 Failure 14 Error 17</p>
+
+<p class='description'>用例执行情况：</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Company.Test021_company_add_P1.Test021_Company_Add_P1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',2)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_company_add: 添加企业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_company_add_back: 添加企业并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Company.Test022_company_modify_P1.Test022_Company_Modify_P1</td>
+    <td>8</td>
+    <td>8</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',8)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_address: 修改企业地址</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_back: 修改企业并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_contact: 修改企业联系人</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+        pass</a>
+
+    <div id='div_pt2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_limit: 修改企业人数上限</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.4')" >
+        pass</a>
+
+    <div id='div_pt2.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_name: 修改企业名称</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.5')" >
+        pass</a>
+
+    <div id='div_pt2.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_server: 修改企业存储服务器地址</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.6')" >
+        pass</a>
+
+    <div id='div_pt2.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_trade: 修改企业行业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.7')" >
+        pass</a>
+
+    <div id='div_pt2.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.7: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_type: 修改企业类型</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.8')" >
+        pass</a>
+
+    <div id='div_pt2.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.8: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Company.Test023_company_delete_P1.Test023_Company_Delete_P1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',2)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_cancle: 取消删除企业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_company_delete: 删除企业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.2')" >
+        pass</a>
+
+    <div id='div_pt3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Company.Test024_company_list_error.Test024_Company_List_Error</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_unselect: 不选择任何企业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Company.Test025_company_add_error.Test025_Company_Add_Error</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',2)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_company_add_error1: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        pass</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_company_add_error2: 人数上限输入无效</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.2')" >
+        pass</a>
+
+    <div id='div_pt5.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Company.Test026_company_modify_error.Test026_Company_Modify_Error</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',2)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_company_modify_error1: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        pass</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_company_modify_error2: 人数上限输入无效</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.2')" >
+        pass</a>
+
+    <div id='div_pt6.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Department.Test027_department_add_P1.Test027_Department_Add_P1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',2)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_department_add: 添加部门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        pass</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt7.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_department_add_back: 添加部门并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.2')" >
+        pass</a>
+
+    <div id='div_pt7.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>Manage_Department.Test028_department_modify_P1.Test028_Department_Modify_P1</td>
+    <td>4</td>
+    <td>3</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',4)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_back: 修改部门并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.1')" >
+        pass</a>
+
+    <div id='div_pt8.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_modify_dept: 修改上级部门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.2')" >
+        fail</a>
+
+    <div id='div_ft8.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.2: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Department\Test028_department_modify_P1.py", line 44, in test_modify_dept
+    self.assertEqual(d.success(), True)
+AssertionError: False != True
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Department\Test028_department_modify_P1.py", line 44, in test_modify_dept
+    self.assertEqual(d.success(), True)
+AssertionError: False != True
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt8.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_name: 修改部门名称</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.3')" >
+        pass</a>
+
+    <div id='div_pt8.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt8.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_number: 修改排序号</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.4')" >
+        pass</a>
+
+    <div id='div_pt8.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>Manage_Department.Test029_department_delete_P1.Test029_Department_Delete_P1</td>
+    <td>2</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c9',2)">Detail</a></td>
+</tr>
+
+<tr id='ft9.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_department_cancle: 取消删除部门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.1')" >
+        fail</a>
+
+    <div id='div_ft9.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft9.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft9.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Department\Test029_department_delete_P1.py", line 28, in test_department_cancle
+    self.assertEqual(d.result(), "您确定要删除这条信息吗")
+AssertionError: '操作失败' != '您确定要删除这条信息吗'
+- 操作失败
++ 您确定要删除这条信息吗
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Department\Test029_department_delete_P1.py", line 28, in test_department_cancle
+    self.assertEqual(d.result(), "您确定要删除这条信息吗")
+AssertionError: '操作失败' != '您确定要删除这条信息吗'
+- 操作失败
++ 您确定要删除这条信息吗
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt9.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_department_delete: 删除部门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt9.2')" >
+        pass</a>
+
+    <div id='div_pt9.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt9.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt9.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Department.Test030_department_list_error.Test030_Deparment_List_Error</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c10',2)">Detail</a></td>
+</tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_multiselect: 选择两个部门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.1')" >
+        pass</a>
+
+    <div id='div_pt10.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt10.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt10.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt10.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_unselect: 不选择任何部门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.2')" >
+        pass</a>
+
+    <div id='div_pt10.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt10.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt10.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Department.Test031_department_add_error.Test031_Department_Add_Error</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c11',3)">Detail</a></td>
+</tr>
+
+<tr id='pt11.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_department_add_error1: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.1')" >
+        pass</a>
+
+    <div id='div_pt11.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt11.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt11.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt11.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_department_add_error2: 部门名称已存在</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.2')" >
+        pass</a>
+
+    <div id='div_pt11.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt11.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt11.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt11.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_department_add_error3: 排序码无效</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.3')" >
+        pass</a>
+
+    <div id='div_pt11.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt11.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt11.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>Manage_Department.Test032_department_modify_error.Test032_Department_Modify_Error</td>
+    <td>4</td>
+    <td>3</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c12',4)">Detail</a></td>
+</tr>
+
+<tr id='pt12.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_department_modify_error1: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.1')" >
+        pass</a>
+
+    <div id='div_pt12.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt12.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt12.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft12.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_department_modify_error2: 部门名称已存在</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft12.2')" >
+        fail</a>
+
+    <div id='div_ft12.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft12.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft12.2: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Department\Test032_department_modify_error.py", line 30, in test_department_modify_error2
+    self.assertEqual(d.reason(), "数据库中已存在该记录")
+AssertionError: '' != '数据库中已存在该记录'
++ 数据库中已存在该记录
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Department\Test032_department_modify_error.py", line 30, in test_department_modify_error2
+    self.assertEqual(d.reason(), "数据库中已存在该记录")
+AssertionError: '' != '数据库中已存在该记录'
++ 数据库中已存在该记录
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt12.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_department_modify_error3: 把本部门设为上级部门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.3')" >
+        pass</a>
+
+    <div id='div_pt12.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt12.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt12.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt12.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_department_modify_error4: 修改有子部门的部门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.4')" >
+        pass</a>
+
+    <div id='div_pt12.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt12.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt12.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Department.Test033_department_delete_error.Test033_Department_Delete_Error</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c13',1)">Detail</a></td>
+</tr>
+
+<tr id='pt13.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_department_delete_error: 删除有子部门的部门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt13.1')" >
+        pass</a>
+
+    <div id='div_pt13.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt13.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt13.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Device.Test034_device_add_P1.Test034_Device_Add_P1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c14',2)">Detail</a></td>
+</tr>
+
+<tr id='pt14.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_device_add: 添加设备</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.1')" >
+        pass</a>
+
+    <div id='div_pt14.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt14.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt14.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_device_add_back: 添加设备并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.2')" >
+        pass</a>
+
+    <div id='div_pt14.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt14.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt14.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Device.Test035_device_modify_P1.Test035_Device_Modify_P1</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c15',4)">Detail</a></td>
+</tr>
+
+<tr id='pt15.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_back</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.1')" >
+        pass</a>
+
+    <div id='div_pt15.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt15.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt15.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_name: 修改设备名称</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.2')" >
+        pass</a>
+
+    <div id='div_pt15.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt15.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt15.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_serial: 修改设备序列号</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.3')" >
+        pass</a>
+
+    <div id='div_pt15.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt15.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt15.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_version: 修改设备版本号</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.4')" >
+        pass</a>
+
+    <div id='div_pt15.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt15.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt15.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Device.Test036_device_delete_P1.Test036_Device_Delete_P1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c16',2)">Detail</a></td>
+</tr>
+
+<tr id='pt16.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_cancle: 取消删除</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.1')" >
+        pass</a>
+
+    <div id='div_pt16.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt16.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt16.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delete: 删除设备</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.2')" >
+        pass</a>
+
+    <div id='div_pt16.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt16.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt16.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_Device.Test037_device_list_error.Test037_Device_List_Error</td>
+    <td>2</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c17',2)">Detail</a></td>
+</tr>
+
+<tr id='ft17.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_multiselect: 选择两个设备</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft17.1')" >
+        error</a>
+
+    <div id='div_ft17.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft17.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft17.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Device\Test037_device_list_error.py", line 20, in test_multiselect
+    d.open_devicemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\devicemanagePage.py", line 18, in open_devicemanage
+    self.expand()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 19, in expand
+    self.find_element(*self.side_menu_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='page-wrapper']/div[1]/nav/div/a"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Device\Test037_device_list_error.py", line 20, in test_multiselect
+    d.open_devicemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\devicemanagePage.py", line 18, in open_devicemanage
+    self.expand()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 19, in expand
+    self.find_element(*self.side_menu_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='page-wrapper']/div[1]/nav/div/a"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt17.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_unselect: 不选择任何设备</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt17.2')" >
+        pass</a>
+
+    <div id='div_pt17.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt17.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt17.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Device.Test038_device_add_error.Test038_Device_Add_Error</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c18',2)">Detail</a></td>
+</tr>
+
+<tr id='pt18.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_device_add_error1: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.1')" >
+        pass</a>
+
+    <div id='div_pt18.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt18.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt18.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_device_add_error2: 版本号输入无效</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.2')" >
+        pass</a>
+
+    <div id='div_pt18.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt18.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt18.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Device.Test039_device_modify_error.Test039_Device_Modify_Error</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c19',2)">Detail</a></td>
+</tr>
+
+<tr id='pt19.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_device_modify_error1: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt19.1')" >
+        pass</a>
+
+    <div id='div_pt19.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt19.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt19.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt19.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_device_modify_error2: 版本号输入无效</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt19.2')" >
+        pass</a>
+
+    <div id='div_pt19.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt19.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt19.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_Role.Test015_role_add_P1.Test015_Role_Add_P1</td>
+    <td>2</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c20',2)">Detail</a></td>
+</tr>
+
+<tr id='pt20.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_add_role: 添加角色</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt20.1')" >
+        pass</a>
+
+    <div id='div_pt20.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt20.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt20.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft20.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_role_back: 添加角色并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft20.2')" >
+        error</a>
+
+    <div id='div_ft20.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft20.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft20.2: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test015_role_add_P1.py", line 25, in test_add_role_back
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 16, in open_rolemanage
+    self.expand()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 19, in expand
+    self.find_element(*self.side_menu_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='page-wrapper']/div[1]/nav/div/a"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test015_role_add_P1.py", line 25, in test_add_role_back
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 16, in open_rolemanage
+    self.expand()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 19, in expand
+    self.find_element(*self.side_menu_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='page-wrapper']/div[1]/nav/div/a"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_Role.Test016_role_modify_P1.Test016_Role_Modify_P1</td>
+    <td>4</td>
+    <td>3</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c21',4)">Detail</a></td>
+</tr>
+
+<tr id='pt21.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_back: 修改角色并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.1')" >
+        pass</a>
+
+    <div id='div_pt21.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt21.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt21.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft21.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_modify_description: 修改角色备注</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft21.2')" >
+        error</a>
+
+    <div id='div_ft21.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft21.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft21.2: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test016_role_modify_P1.py", line 25, in test_modify_description
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 17, in open_rolemanage
+    self.find_element(*self.usermanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"用户管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test016_role_modify_P1.py", line 25, in test_modify_description
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 17, in open_rolemanage
+    self.find_element(*self.usermanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"用户管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt21.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_name: 修改角色名称</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.3')" >
+        pass</a>
+
+    <div id='div_pt21.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt21.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt21.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt21.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_type: 修改角色类型</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.4')" >
+        pass</a>
+
+    <div id='div_pt21.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt21.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt21.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Role.Test017_role_delete_P1.Test017_Role_Delete_P1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c22',2)">Detail</a></td>
+</tr>
+
+<tr id='pt22.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_cancle: 取消删除角色</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt22.1')" >
+        pass</a>
+
+    <div id='div_pt22.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt22.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt22.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt22.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delete: 删除角色</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt22.2')" >
+        pass</a>
+
+    <div id='div_pt22.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt22.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt22.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_Role.Test018_role_list_error.Test018_Role_List_Error</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c23',2)">Detail</a></td>
+</tr>
+
+<tr id='ft23.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_multiselect: 选择两个角色</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft23.1')" >
+        error</a>
+
+    <div id='div_ft23.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft23.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft23.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test018_role_list_error.py", line 20, in test_multiselect
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 17, in open_rolemanage
+    self.find_element(*self.usermanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"用户管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test018_role_list_error.py", line 20, in test_multiselect
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 17, in open_rolemanage
+    self.find_element(*self.usermanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"用户管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft23.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_unselect: 不选择任何角色</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft23.2')" >
+        error</a>
+
+    <div id='div_ft23.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft23.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft23.2: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test018_role_list_error.py", line 11, in test_unselect
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 17, in open_rolemanage
+    self.find_element(*self.usermanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"用户管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test018_role_list_error.py", line 11, in test_unselect
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 17, in open_rolemanage
+    self.find_element(*self.usermanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"用户管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_Role.Test019_role_add_error.Test019_Role_Add_Error</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c24',1)">Detail</a></td>
+</tr>
+
+<tr id='ft24.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_role_add_error</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft24.1')" >
+        error</a>
+
+    <div id='div_ft24.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft24.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft24.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test019_role_add_error.py", line 10, in test_role_add_error
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 17, in open_rolemanage
+    self.find_element(*self.usermanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"用户管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test019_role_add_error.py", line 10, in test_role_add_error
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 17, in open_rolemanage
+    self.find_element(*self.usermanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"用户管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_Role.Test020_role_modify_error.Test020_Role_Modify_Error</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c25',1)">Detail</a></td>
+</tr>
+
+<tr id='ft25.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_role_modify_error: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft25.1')" >
+        error</a>
+
+    <div id='div_ft25.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft25.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft25.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test020_role_modify_error.py", line 11, in test_role_modify_error
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 17, in open_rolemanage
+    self.find_element(*self.usermanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"用户管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Role\Test020_role_modify_error.py", line 11, in test_role_modify_error
+    u.open_rolemanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\rolemanagePage.py", line 17, in open_rolemanage
+    self.find_element(*self.usermanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"用户管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_Session.Test046_session_check_P1.Test046_Session_Check_P1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c26',1)">Detail</a></td>
+</tr>
+
+<tr id='ft26.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_session_check: 查看会话详情</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft26.1')" >
+        error</a>
+
+    <div id='div_ft26.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft26.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft26.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Session\Test046_session_check_P1.py", line 11, in test_session_check
+    s.open_sessionmanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sessionmanagePage.py", line 20, in open_sessionmanage
+    self.find_element(*self.workmanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"工作管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Session\Test046_session_check_P1.py", line 11, in test_session_check
+    s.open_sessionmanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sessionmanagePage.py", line 20, in open_sessionmanage
+    self.find_element(*self.workmanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"工作管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_Session.Test047_session_modify_P1.Test047_Sission_Modify_P1</td>
+    <td>3</td>
+    <td>2</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c27',3)">Detail</a></td>
+</tr>
+
+<tr id='ft27.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_back: 修改并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft27.1')" >
+        error</a>
+
+    <div id='div_ft27.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft27.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft27.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Session\Test047_session_modify_P1.py", line 39, in test_back
+    s.open_sessionmanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sessionmanagePage.py", line 20, in open_sessionmanage
+    self.find_element(*self.workmanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"工作管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Session\Test047_session_modify_P1.py", line 39, in test_back
+    s.open_sessionmanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sessionmanagePage.py", line 20, in open_sessionmanage
+    self.find_element(*self.workmanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"工作管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt27.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_session_modify_keyword: 修改关键词</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt27.2')" >
+        pass</a>
+
+    <div id='div_pt27.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt27.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt27.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt27.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_session_modify_name: 修改会话名称</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt27.3')" >
+        pass</a>
+
+    <div id='div_pt27.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt27.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt27.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>Manage_Session.Test048_session_delete_P1.Test048_Session_Delete_P1</td>
+    <td>2</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c28',2)">Detail</a></td>
+</tr>
+
+<tr id='ft28.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_session_delete: 删除会话</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft28.1')" >
+        fail</a>
+
+    <div id='div_ft28.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft28.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft28.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Session\Test048_session_delete_P1.py", line 16, in test_session_delete
+    self.assertEqual(s.reason(), "无权删除")
+AssertionError: '' != '无权删除'
++ 无权删除
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Session\Test048_session_delete_P1.py", line 16, in test_session_delete
+    self.assertEqual(s.reason(), "无权删除")
+AssertionError: '' != '无权删除'
++ 无权删除
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt28.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_session_delete_cancle: 取消删除会话</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt28.2')" >
+        pass</a>
+
+    <div id='div_pt28.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt28.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt28.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Session.Test049_session_list_error.Test049_Session_List_Error</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c29',2)">Detail</a></td>
+</tr>
+
+<tr id='pt29.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_multiselect: 选择两条会话</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt29.1')" >
+        pass</a>
+
+    <div id='div_pt29.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt29.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt29.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt29.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_unselect: 不选择任何会话</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt29.2')" >
+        pass</a>
+
+    <div id='div_pt29.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt29.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt29.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_Session.Test050_session_modify_error.Test050_Session_Modify_Error</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c30',1)">Detail</a></td>
+</tr>
+
+<tr id='ft30.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_blank</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft30.1')" >
+        error</a>
+
+    <div id='div_ft30.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft30.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft30.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Session\Test050_session_modify_error.py", line 10, in test_blank
+    s.open_sessionmanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sessionmanagePage.py", line 20, in open_sessionmanage
+    self.find_element(*self.workmanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"工作管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Session\Test050_session_modify_error.py", line 10, in test_blank
+    s.open_sessionmanage()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sessionmanagePage.py", line 20, in open_sessionmanage
+    self.find_element(*self.workmanage_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"link text","selector":"工作管理"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Special.Test040_special_add_P1.Test040_Special_Add_P1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c31',2)">Detail</a></td>
+</tr>
+
+<tr id='pt31.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_special_add: 添加专业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt31.1')" >
+        pass</a>
+
+    <div id='div_pt31.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt31.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt31.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt31.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_special_add_back: 添加专业并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt31.2')" >
+        pass</a>
+
+    <div id='div_pt31.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt31.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt31.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Special.Test041_special_modify_P1.Test041_Special_Modify_P1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c32',2)">Detail</a></td>
+</tr>
+
+<tr id='pt32.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_back: 修改专业并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt32.1')" >
+        pass</a>
+
+    <div id='div_pt32.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt32.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt32.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt32.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_name: 修改专业名</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt32.2')" >
+        pass</a>
+
+    <div id='div_pt32.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt32.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt32.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Special.Test042_special_delete_P1.Test042_Special_Delete_P1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c33',2)">Detail</a></td>
+</tr>
+
+<tr id='pt33.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_special_delete: 删除专业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt33.1')" >
+        pass</a>
+
+    <div id='div_pt33.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt33.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt33.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt33.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_special_delete_cancle: 取消删除专业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt33.2')" >
+        pass</a>
+
+    <div id='div_pt33.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt33.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt33.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_Special.Test043_special_list_error.Test043_Special_List_Error</td>
+    <td>2</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c34',2)">Detail</a></td>
+</tr>
+
+<tr id='ft34.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_multiselect: 选择两个专业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft34.1')" >
+        error</a>
+
+    <div id='div_ft34.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft34.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft34.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Special\Test043_special_list_error.py", line 23, in test_multiselect
+    s.multi_select()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 102, in multi_select
+    self.find_element(*self.checkbox_2_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='bssapp']/div/div/div/div[3]/div/table/tbody/tr[2]/td[1]/label/span"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_Special\Test043_special_list_error.py", line 23, in test_multiselect
+    s.multi_select()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 102, in multi_select
+    self.find_element(*self.checkbox_2_loc).click()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='bssapp']/div/div/div/div[3]/div/table/tbody/tr[2]/td[1]/label/span"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt34.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_unselect: 不选择任何专业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt34.2')" >
+        pass</a>
+
+    <div id='div_pt34.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt34.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt34.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Special.Test044_special_add_error.Test044_Special_Add_Error</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c35',1)">Detail</a></td>
+</tr>
+
+<tr id='pt35.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_special_add_error: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt35.1')" >
+        pass</a>
+
+    <div id='div_pt35.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt35.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt35.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_Special.Test045_special_modify_error.Test045_Special_Modify_Error</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c36',1)">Detail</a></td>
+</tr>
+
+<tr id='pt36.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_special_modify_error: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt36.1')" >
+        pass</a>
+
+    <div id='div_pt36.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt36.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt36.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_User.Test009_user_add_P1.Test009_User_Add_P1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c37',2)">Detail</a></td>
+</tr>
+
+<tr id='pt37.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_add_user: 添加用户</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt37.1')" >
+        pass</a>
+
+    <div id='div_pt37.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt37.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt37.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt37.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_back: 添加用户并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt37.2')" >
+        pass</a>
+
+    <div id='div_pt37.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt37.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt37.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_User.Test010_user_modify_P1.Test010_User_Modify_P1</td>
+    <td>7</td>
+    <td>5</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c38',7)">Detail</a></td>
+</tr>
+
+<tr id='pt38.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_back: 修改用户信息并返回</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt38.1')" >
+        pass</a>
+
+    <div id='div_pt38.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt38.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt38.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft38.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_modify_department: 修改用户部门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft38.2')" >
+        error</a>
+
+    <div id='div_ft38.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft38.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft38.2: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_User\Test010_user_modify_P1.py", line 53, in test_modify_department
+    u.modify_save()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 129, in modify_save
+    self.find_element(*self.modify_save_button_loc).click()
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webelement.py", line 501, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: Element is not clickable at point (81, 802)
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_User\Test010_user_modify_P1.py", line 53, in test_modify_department
+    u.modify_save()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 129, in modify_save
+    self.find_element(*self.modify_save_button_loc).click()
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webelement.py", line 501, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: Element is not clickable at point (81, 802)
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt38.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_description: 修改用户描述</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt38.3')" >
+        pass</a>
+
+    <div id='div_pt38.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt38.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt38.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt38.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_name: 修改用户姓名</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt38.4')" >
+        pass</a>
+
+    <div id='div_pt38.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt38.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt38.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt38.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_role: 修改用户角色</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt38.5')" >
+        pass</a>
+
+    <div id='div_pt38.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt38.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt38.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt38.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_special: 修改用户专业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt38.6')" >
+        pass</a>
+
+    <div id='div_pt38.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt38.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt38.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft38.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_modify_type: 修改用户类型</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft38.7')" >
+        error</a>
+
+    <div id='div_ft38.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft38.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft38.7: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\usermanagePage.py", line 141, in change_type
+    if self.find_element(*checkbox_loc).get_property("previousElementSibling").get_property("checked") == False:
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='commentForm']/div[9]/div/ul/li[3]/a/label/span"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_User\Test010_user_modify_P1.py", line 41, in test_modify_type
+    u.change_type()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\usermanagePage.py", line 145, in change_type
+    if self.find_element(*self.user_add_special_loc).get_attribute("innerText") == "暂无数据":
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='commentForm']/div[9]/div/ul/li/div/span"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\usermanagePage.py", line 141, in change_type
+    if self.find_element(*checkbox_loc).get_property("previousElementSibling").get_property("checked") == False:
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='commentForm']/div[9]/div/ul/li[3]/a/label/span"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_User\Test010_user_modify_P1.py", line 41, in test_modify_type
+    u.change_type()
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\usermanagePage.py", line 145, in change_type
+    if self.find_element(*self.user_add_special_loc).get_attribute("innerText") == "暂无数据":
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='commentForm']/div[9]/div/ul/li/div/span"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>Manage_User.Test011_user_delete_P1.Test011_User_Delete_P1</td>
+    <td>2</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c39',2)">Detail</a></td>
+</tr>
+
+<tr id='ft39.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_cancle: 取消删除用户</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft39.1')" >
+        error</a>
+
+    <div id='div_ft39.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft39.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft39.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_User\Test011_user_delete_P1.py", line 26, in test_cancle
+    self.assertEqual(u.result(), "您确定要删除这条信息吗")
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 35, in result
+    return self.find_element(*self.result_loc).text
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"html/body/div[3]/h2"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Manage_User\Test011_user_delete_P1.py", line 26, in test_cancle
+    self.assertEqual(u.result(), "您确定要删除这条信息吗")
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 35, in result
+    return self.find_element(*self.result_loc).text
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"html/body/div[3]/h2"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt39.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delete: 删除用户</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt39.2')" >
+        pass</a>
+
+    <div id='div_pt39.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt39.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt39.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_User.Test012_user_list_error.Test012_User_List_Error</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c40',2)">Detail</a></td>
+</tr>
+
+<tr id='pt40.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_multiselect: 选择两个用户</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt40.1')" >
+        pass</a>
+
+    <div id='div_pt40.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt40.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt40.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt40.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_unselect: 不选择任何用户</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt40.2')" >
+        pass</a>
+
+    <div id='div_pt40.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt40.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt40.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_User.Test013_user_add_error.Test013_User_Add_Error</td>
+    <td>10</td>
+    <td>10</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c41',10)">Detail</a></td>
+</tr>
+
+<tr id='pt41.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_add_error1: 用户输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.1')" >
+        pass</a>
+
+    <div id='div_pt41.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_add_error10: 邮箱格式不正确</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.2')" >
+        pass</a>
+
+    <div id='div_pt41.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_add_error2: 密码不足6位</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.3')" >
+        pass</a>
+
+    <div id='div_pt41.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_add_error3: 确认密码不符</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.4')" >
+        pass</a>
+
+    <div id='div_pt41.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_add_error4: 邮箱不足6位</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.5')" >
+        pass</a>
+
+    <div id='div_pt41.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_add_error5: 手机号码不足11位</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.6')" >
+        pass</a>
+
+    <div id='div_pt41.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_add_error6: 手机号码格式不正确</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.7')" >
+        pass</a>
+
+    <div id='div_pt41.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.7: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_add_error7: 用户邮箱已存在</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.8')" >
+        pass</a>
+
+    <div id='div_pt41.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.8: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_add_error8: 电话号码已存在</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.9')" >
+        pass</a>
+
+    <div id='div_pt41.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.9: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_add_error9: 专业为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.10')" >
+        pass</a>
+
+    <div id='div_pt41.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.10: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>Manage_User.Test014_user_modify_error.Test014_User_Modify_Error</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c42',2)">Detail</a></td>
+</tr>
+
+<tr id='pt42.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_modify_error1: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt42.1')" >
+        pass</a>
+
+    <div id='div_pt42.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt42.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt42.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt42.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user_modify_error2: 没有专业</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt42.2')" >
+        pass</a>
+
+    <div id='div_pt42.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt42.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt42.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>Session.Test051_session_status_P1.Test051_Session_Status_P1</td>
+    <td>3</td>
+    <td>1</td>
+    <td>2</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c43',3)">Detail</a></td>
+</tr>
+
+<tr id='ft43.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_online: 上线通知</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft43.1')" >
+        fail</a>
+
+    <div id='div_ft43.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft43.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft43.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Session\Test051_session_status_P1.py", line 11, in test_online
+    self.assertEqual(s.websocket_notification(), "GLXSSLive\n您已上线，欢迎使用GLXSSlive远程指导系统！")
+AssertionError: 'GLXSSLive\n您已上线，欢迎使用GLXSSlive远程指导系统!' != 'GLXSSLive\n您已上线，状态为空闲中!'
+  GLXSSLive
+- 您已上线，欢迎使用GLXSSlive远程指导系统!+ 您已上线，状态为空闲中!
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Session\Test051_session_status_P1.py", line 11, in test_online
+    self.assertEqual(s.websocket_notification(), "GLXSSLive\n您已上线，欢迎使用GLXSSlive远程指导系统！")
+AssertionError: 'GLXSSLive\n您已上线，欢迎使用GLXSSlive远程指导系统!' != 'GLXSSLive\n您已上线，状态为空闲中!'
+  GLXSSLive
+- 您已上线，欢迎使用GLXSSlive远程指导系统!+ 您已上线，状态为空闲中!
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft43.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_send: 未建立会话时发送文字消息</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft43.2')" >
+        fail</a>
+
+    <div id='div_ft43.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft43.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft43.2: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Session\Test051_session_status_P1.py", line 27, in test_send
+AssertionError: '' != '连接尚未建立，发送失败！'
++ 连接尚未建立，发送失败！
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Session\Test051_session_status_P1.py", line 27, in test_send
+AssertionError: '' != '连接尚未建立，发送失败！'
++ 连接尚未建立，发送失败！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt43.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_status: 专家状态修改</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt43.3')" >
+        pass</a>
+
+    <div id='div_pt43.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt43.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt43.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>User.Test001_loginandout_P1.Test001_LoginAndOut_P1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c44',1)">Detail</a></td>
+</tr>
+
+<tr id='pt44.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login: 登录成功并登出</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt44.1')" >
+        pass</a>
+
+    <div id='div_pt44.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt44.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt44.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>User.Test002_login_error.Test002_Login_Error</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c45',5)">Detail</a></td>
+</tr>
+
+<tr id='pt45.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_error1: 账号格式错误</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt45.1')" >
+        pass</a>
+
+    <div id='div_pt45.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt45.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt45.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt45.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_error2: 账号密码不正确</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt45.2')" >
+        pass</a>
+
+    <div id='div_pt45.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt45.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt45.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt45.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_error4: 用户被删除</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt45.3')" >
+        pass</a>
+
+    <div id='div_pt45.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt45.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt45.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt45.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_error5: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt45.4')" >
+        pass</a>
+
+    <div id='div_pt45.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt45.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt45.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt45.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_error6: 密码不足6位</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt45.5')" >
+        pass</a>
+
+    <div id='div_pt45.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt45.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt45.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>User.Test003_register_P1.Test003_Register_P1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c46',1)">Detail</a></td>
+</tr>
+
+<tr id='ft46.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_register: 注册成功</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft46.1')" >
+        fail</a>
+
+    <div id='div_ft46.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft46.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft46.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test003_register_P1.py", line 17, in test_register
+    self.assertEqual(r.verify_page(), True)
+AssertionError: False != True
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test003_register_P1.py", line 17, in test_register
+    self.assertEqual(r.verify_page(), True)
+AssertionError: False != True
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>User.Test004_register_error.Test004_Register_Error</td>
+    <td>7</td>
+    <td>3</td>
+    <td>4</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c47',7)">Detail</a></td>
+</tr>
+
+<tr id='ft47.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_loginerror8: 用户超出限制</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft47.1')" >
+        fail</a>
+
+    <div id='div_ft47.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft47.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft47.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test004_register_error.py", line 71, in test_loginerror8
+    self.assertEqual(r.error_hint(), "注册：用户数超出限制")
+AssertionError: '注册：' != '注册：用户数超出限制'
+- 注册：
++ 注册：用户数超出限制
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test004_register_error.py", line 71, in test_loginerror8
+    self.assertEqual(r.error_hint(), "注册：用户数超出限制")
+AssertionError: '注册：' != '注册：用户数超出限制'
+- 注册：
++ 注册：用户数超出限制
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft47.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_register_error1: 企业不存在</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft47.2')" >
+        fail</a>
+
+    <div id='div_ft47.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft47.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft47.2: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test004_register_error.py", line 15, in test_register_error1
+    self.assertEqual(r.error_hint(), "注册：企业不存在")
+AssertionError: '注册：' != '注册：企业不存在'
+- 注册：
++ 注册：企业不存在
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test004_register_error.py", line 15, in test_register_error1
+    self.assertEqual(r.error_hint(), "注册：企业不存在")
+AssertionError: '注册：' != '注册：企业不存在'
+- 注册：
++ 注册：企业不存在
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft47.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_register_error2: 邮箱重复</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft47.3')" >
+        fail</a>
+
+    <div id='div_ft47.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft47.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft47.3: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test004_register_error.py", line 23, in test_register_error2
+    self.assertEqual(r.error_hint(), "注册：数据库中已存在该记录")
+AssertionError: '注册：' != '注册：数据库中已存在该记录'
+- 注册：
++ 注册：数据库中已存在该记录
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test004_register_error.py", line 23, in test_register_error2
+    self.assertEqual(r.error_hint(), "注册：数据库中已存在该记录")
+AssertionError: '注册：' != '注册：数据库中已存在该记录'
+- 注册：
++ 注册：数据库中已存在该记录
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft47.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_register_error4: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft47.4')" >
+        fail</a>
+
+    <div id='div_ft47.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft47.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft47.4: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test004_register_error.py", line 39, in test_register_error4
+    self.assertEqual(r.pop_error_hint(), "不能为空哦")
+AssertionError: '' != '不能为空哦'
++ 不能为空哦
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test004_register_error.py", line 39, in test_register_error4
+    self.assertEqual(r.pop_error_hint(), "不能为空哦")
+AssertionError: '' != '不能为空哦'
++ 不能为空哦
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt47.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_error5: Email地址无效</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt47.5')" >
+        pass</a>
+
+    <div id='div_pt47.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt47.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt47.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt47.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_error6: 密码不足6位</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt47.6')" >
+        pass</a>
+
+    <div id='div_pt47.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt47.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt47.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt47.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_error7: 确认密码不符</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt47.7')" >
+        pass</a>
+
+    <div id='div_pt47.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt47.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt47.7: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>User.Test005_profile_P1.Test005_Profile_P1</td>
+    <td>4</td>
+    <td>2</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c48',4)">Detail</a></td>
+</tr>
+
+<tr id='pt48.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_back: 返回到个人信息页面</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt48.1')" >
+        pass</a>
+
+    <div id='div_pt48.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt48.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt48.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft48.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_update_avatar: 更新头像</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft48.2')" >
+        error</a>
+
+    <div id='div_ft48.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft48.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft48.2: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test005_profile_P1.py", line 19, in test_update_avatar
+    self.assertEqual(p.success(), True)
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 38, in success
+    return self.result() == "操作成功"
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 35, in result
+    return self.find_element(*self.result_loc).text
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"html/body/div[3]/h2"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test005_profile_P1.py", line 19, in test_update_avatar
+    self.assertEqual(p.success(), True)
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 38, in success
+    return self.result() == "操作成功"
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 35, in result
+    return self.find_element(*self.result_loc).text
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"html/body/div[3]/h2"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft48.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_update_name: 更新姓名</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft48.3')" >
+        error</a>
+
+    <div id='div_ft48.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft48.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft48.3: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test005_profile_P1.py", line 30, in test_update_name
+    self.assertEqual(p.success(), True)
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 38, in success
+    return self.result() == "操作成功"
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 35, in result
+    return self.find_element(*self.result_loc).text
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"html/body/div[3]/h2"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test005_profile_P1.py", line 30, in test_update_name
+    self.assertEqual(p.success(), True)
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 38, in success
+    return self.result() == "操作成功"
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\sidemenuPage.py", line 35, in result
+    return self.find_element(*self.result_loc).text
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"html/body/div[3]/h2"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt48.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_update_password: 更新密码</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt48.4')" >
+        pass</a>
+
+    <div id='div_pt48.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt48.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt48.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>User.Test006_forgotpassword_P1.Test006_ForgotPassword_P1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c49',1)">Detail</a></td>
+</tr>
+
+<tr id='ft49.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_forgotpassword: 重置密码</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft49.1')" >
+        fail</a>
+
+    <div id='div_ft49.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft49.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft49.1: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test006_forgotpassword_P1.py", line 17, in test_forgotpassword
+    self.assertEqual(r.error_hint(), "忘记密码：发送成功")
+AssertionError: '忘记密码：' != '忘记密码：发送成功'
+- 忘记密码：
++ 忘记密码：发送成功
+?      ++++
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test006_forgotpassword_P1.py", line 17, in test_forgotpassword
+    self.assertEqual(r.error_hint(), "忘记密码：发送成功")
+AssertionError: '忘记密码：' != '忘记密码：发送成功'
+- 忘记密码：
++ 忘记密码：发送成功
+?      ++++
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>User.Test007_forgotpassword_error.Test007_ForgotPassword_Error</td>
+    <td>5</td>
+    <td>2</td>
+    <td>2</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c50',5)">Detail</a></td>
+</tr>
+
+<tr id='pt50.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_forgot_password_error1: 邮箱地址为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt50.1')" >
+        pass</a>
+
+    <div id='div_pt50.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt50.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt50.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft50.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_forgot_password_error2: 其他输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft50.2')" >
+        error</a>
+
+    <div id='div_ft50.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft50.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft50.2: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test007_forgotpassword_error.py", line 22, in test_forgot_password_error2
+    f.forgot_password(Data.realemail)
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\forgotpasswordPage.py", line 26, in forgot_password
+    self.find_element(*self.forgotpassword_email_loc).send_keys(email)
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"name","selector":"email"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test007_forgotpassword_error.py", line 22, in test_forgot_password_error2
+    f.forgot_password(Data.realemail)
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\forgotpasswordPage.py", line 26, in forgot_password
+    self.find_element(*self.forgotpassword_email_loc).send_keys(email)
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\Page_obj\Page.py", line 15, in find_element
+    return self.driver.find_element(*loc)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 855, in find_element
+    'value': value})['value']
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 308, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"name","selector":"email"}
+  (Session info: chrome=62.0.3202.89)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.16299 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft50.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_forgot_password_error4: 密码不足6位</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft50.3')" >
+        fail</a>
+
+    <div id='div_ft50.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft50.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft50.3: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test007_forgotpassword_error.py", line 43, in test_forgot_password_error4
+    self.assertEqual(f.pop_error_hint(), "最少 6 个字")
+AssertionError: '不能为空哦' != '最少 6 个字'
+- 不能为空哦
++ 最少 6 个字
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test007_forgotpassword_error.py", line 43, in test_forgot_password_error4
+    self.assertEqual(f.pop_error_hint(), "最少 6 个字")
+AssertionError: '不能为空哦' != '最少 6 个字'
+- 不能为空哦
++ 最少 6 个字
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft50.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_forgot_password_error5: 确认密码不符</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft50.4')" >
+        fail</a>
+
+    <div id='div_ft50.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft50.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft50.4: Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test007_forgotpassword_error.py", line 53, in test_forgot_password_error5
+    self.assertEqual(f.pop_error_hint(), "你的输入不相同")
+AssertionError: '不能为空哦' != '你的输入不相同'
+- 不能为空哦
++ 你的输入不相同
+
+Traceback (most recent call last):
+  File "D:\Python-master\AutomationTest\GlxssLive_web\TestCase\User\Test007_forgotpassword_error.py", line 53, in test_forgot_password_error5
+    self.assertEqual(f.pop_error_hint(), "你的输入不相同")
+AssertionError: '不能为空哦' != '你的输入不相同'
+- 不能为空哦
++ 你的输入不相同
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt50.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_forgot_password_error6: 用户不存在</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt50.5')" >
+        pass</a>
+
+    <div id='div_pt50.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt50.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt50.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>User.Test008_profile_error.Test008_Profile_Error</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c51',5)">Detail</a></td>
+</tr>
+
+<tr id='pt51.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_name_error: 用户姓名为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt51.1')" >
+        pass</a>
+
+    <div id='div_pt51.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt51.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt51.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt51.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_password_error1: 输入为空</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt51.2')" >
+        pass</a>
+
+    <div id='div_pt51.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt51.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt51.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt51.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_password_error2: 确认密码不一致</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt51.3')" >
+        pass</a>
+
+    <div id='div_pt51.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt51.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt51.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt51.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_password_error3: 新密码不足6位</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt51.4')" >
+        pass</a>
+
+    <div id='div_pt51.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt51.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt51.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt51.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_modify_password_error4: 原密码不正确</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt51.5')" >
+        pass</a>
+
+    <div id='div_pt51.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt51.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt51.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>137</td>
+    <td>106</td>
+    <td>14</td>
+    <td>17</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
